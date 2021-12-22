@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <h1>{{ h1 }}</h1>
+      {% for post in posts %}
+          <ul>
+            <li>
+              Автор: {{ post.author.get_full_name }}
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+          </ul>
+          <p>{{ post.text }}</p>
+          <a href="">все записи группы</a>
+          {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+{% comment "Опциональный текст, поясняющий смысл закомментированного" %}
+  1 вариант: многострочный.
+  <p>Этот кусок шаблона временно отключён {{ create_date|date:"c" }}</p>
+  <p>Уходя, гасите свет.</p>
+{% endcomment %}
+
+{# 2 вариант: однострочный; можно комментировать переменные {{ varaible }} #}
+{# А можно применять для заметок #}
